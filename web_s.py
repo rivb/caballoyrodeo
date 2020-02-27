@@ -1,9 +1,11 @@
 import requests
 import pandas as pd
 import numpy as np
-import time
+from time import sleep
 from selenium import webdriver
 from bs4 import BeautifulSoup
+
+""" Horse """
 
 URL = "http://www1.caballoyrodeo.cl/portal_rodeo/stat/port/genealogia.html?id=10939#gc"
 ADD = "http://www1.caballoyrodeo.cl/portal_rodeo/stat/port/genealogia.html"
@@ -46,7 +48,8 @@ try:
 
     page_1 = requests.get(URL)
     soup = BeautifulSoup(page_1.content, 'html.parser')
-    #find name of the horse
+    
+    #find characteristic of the horse.
     info = soup.find('div',attrs={'class':'info-caballo'}).findAll('dt')
     names.append(info[0].text[8:])
     criaderos.append(info[1].text[10:])
@@ -55,54 +58,51 @@ try:
     sexos.append(info[5].text[6:])
     registros.append(info[7].text[20:])
 
-
-
-
-    #find father in the html .
-    #_1 = soup.find('div',attrs={'class':'n1'}).find('div',attrs={'class':'c1'}).find('a', href=True)
+#extract all the genetic tree and save it in a list.
 
     for n in range(4):
-       
             for c in range(16):
 
                 try:
-
                     find_link_name('n'+(str(n+1)),'c'+(str(c+1)))
 
                 except:
-
                     pass
 
     for link in links_genetic_tree:
-
         try:
-
-
-            page_2 = requests.get(link)
-            soup_2 = BeautifulSoup(page_2.content, 'html.parser')
+            #selenium webdriver : open browser and enter URL
+            URL2=link
+            browser = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+            browser.get(URL2)
+            #extraction of name and ranch breeder of each horse in the genetic tree.
+            soup_2 = BeautifulSoup(browser.page_source, 'html.parser')
             info = soup_2.find('div',attrs={'class':'info-caballo'}).findAll('dt')
             criaderos_genetic_tree.append(info[1].text[10:])
             registros_genetic_tree.append(info[7].text[20:])
+            # counter
+            button = browser.find_element_by_xpath('//*[@id="infh"]/a[1]')
+            print(button)
+            button.click()
 
-            # sons count
-            break
 
-    
         except:
-            print('hi')
+  
             criaderos_genetic_tree.append(None)
             registros_genetic_tree.append(None)
 
+        print(str(link))
+        #numero de hijos
 
+        break
 
-    #request web page entrance of the father genetic tree
-    #page_2 = requests.get(ADD+_1['href'])
     print(registros_genetic_tree)
 
 
 
     
 except requests.exceptions.ConnectionError:
+
     status_code = "Connection refused"
     print(status_code)
 
