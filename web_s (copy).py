@@ -15,30 +15,26 @@ from threading import Thread
 """ Horse """
 # "URL" horse generic tree
 
-def dict_zip(*dicts):
 
+def dict_zip(*dicts):
     all_keys = {k for d in dicts for k in d.keys()}
     return {k: [d[k] for d in dicts if k in d] for k in all_keys}
 
 def find_link_name(n,c,soup):
     #add name and link of father to the list
-
     try:
-        searcher = soup.find('div',attrs={'class':n })
-
         if n == 'n4':
 
-            
+            searcher = soup.find('div',attrs={'class':n })
             searcher = searcher.find_all('a', href= True)
             genetic_tree.append((searcher[int(c[1:])-1].text))
             links_genetic_tree.append((ADD+searcher[int(c[1:])-1]['href']))
 
         else:
 
-            searcher = searcher.find('div',attrs={'class':c}).find('a', href=True) 
+            searcher = soup.find('div',attrs={'class':n }).find('div',attrs={'class':c}).find('a', href=True) 
             genetic_tree.append((searcher.text))
             links_genetic_tree.append((ADD+searcher['href']))
-
     except:
         
         pass
@@ -59,7 +55,8 @@ def extract_tree(link,pos):
             element = WebDriverWait(browser, 10).until(
                 EC.presence_of_element_located((By.LINK_TEXT, "Ver listado de hijos completo"))
             )
-            time.sleep(4)
+
+
             browser.find_element_by_link_text('Ver listado de hijos completo').send_keys("\n")
             soup_2 = BeautifulSoup(browser.page_source, 'html.parser')
             info_2 = soup_2.find('div',attrs={'class':'info-caballo'}).findAll('dt')
@@ -93,28 +90,16 @@ def add_dic(soup):
     info = soup.find('div',attrs={'class':'info-caballo'}).findAll('dt')
    # horses[info[7].text[20:]]={(pos+1):gen,'Criadero1':info_2[1].text[10:],'Registro'+(pos+1):info_2[7].text[20:]}
     horses[info[7].text[20:]]={'Nombre':info[0].text[8:],'Criadero':info[1].text[10:],'Sexo':info[5].text[6:],'Color':info[2].text[7:],'Fecha Nacimiento':info[3].text[12:]}
-    
+    PRINT(genetic_tree)
     for a in range(30):
 
-        try:
-
-            horses[info[7].text[20:]]['Name{}'.format(str(a+1))] = genetic_tree[a]
-            
-            horses[info[7].text[20:]]['Criadero{}'.format(str(a+1))]=caballos[a+1][0]
-            
-            horses[info[7].text[20:]]['Registro{}'.format(str(a+1))]=caballos[a+1][1]
-            
-            horses[info[7].text[20:]]['N_Hijos{}'.format(str(a+1))]=caballos[a+1][2]
-
-        except:
-
-            horses[info[7].text[20:]]['Name{}'.format(str(a+1))] = '0'
-            
-            horses[info[7].text[20:]]['Criadero{}'.format(str(a+1))]= '0'
-            
-            horses[info[7].text[20:]]['Registro{}'.format(str(a+1))]= '0'
-            
-            horses[info[7].text[20:]]['N_Hijos{}'.format(str(a+1))]= '0'
+        horses[info[7].text[20:]]['Name'+str(a+1)] = genetic_tree[a]
+        
+        horses[info[7].text[20:]]['Criadero'+str(a+1)]=caballos[a+1][0]
+        
+        horses[info[7].text[20:]]['Registro'+str(a+1)]=caballos[a+1][1]
+        
+        horses[info[7].text[20:]]['N_Hijos'+str(a+1)]=caballos[a+1][2]
 
 def url_search(url):
 
@@ -123,10 +108,11 @@ def url_search(url):
         page_1 = requests.get(url)
         soup = BeautifulSoup(page_1.content, 'html.parser')
         #find characteristic of the horse.
-        #extract all the genetic tree and save it in a list.
 
-        [find_link_name('n'.format(str(n+1)),'c'.format(str(c+1)),soup) for n in range(4) for c in range(17)]
-        print(genetic_tree)
+    #extract all the genetic tree and save it in a list.
+
+        [find_link_name('n'+str(n+1),'c'+str(c+1),soup) for n in range(4) for c in range(17)]
+
         threadlist = []
 
         for pos,link in enumerate(links_genetic_tree):
@@ -135,9 +121,12 @@ def url_search(url):
             t.start()
             threadlist.append(t)
 
-        [b.join() for b in threadlist]
+        for b in threadlist:
+
+            b.join()
 
         add_dic(soup)
+
 
         del genetic_tree[:]
         del links_genetic_tree[:]
@@ -145,11 +134,11 @@ def url_search(url):
         registros_genetic_tree={}
         n_hijos={}
 
+
     except requests.exceptions.ConnectionError:
 
         status_code = "Connection refused"
         print(status_code)
-
 
 if __name__ == "__main__":
 
