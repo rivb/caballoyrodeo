@@ -1,0 +1,254 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"vide",
+				"VideoCamera"
+			],
+			[
+				"cont",
+				"align-content\tproperty"
+			],
+			[
+				"pa",
+				"padding-top\tproperty"
+			],
+			[
+				"font",
+				"font-weight\tproperty"
+			],
+			[
+				"fo",
+				"font-size\tproperty"
+			],
+			[
+				"con",
+				"align-content\tproperty"
+			],
+			[
+				"pad",
+				"padding-right\tproperty"
+			],
+			[
+				"GENETI",
+				"genetic_tree"
+			],
+			[
+				"st",
+				"start"
+			],
+			[
+				"url",
+				"url_search"
+			],
+			[
+				"extrac",
+				"extract_tree"
+			],
+			[
+				"ex",
+				"extract_tree"
+			],
+			[
+				"fin",
+				"find_link_name"
+			],
+			[
+				"geneti",
+				"genetic_tree"
+			],
+			[
+				"link",
+				"links_genetic_tree"
+			],
+			[
+				"csv",
+				"csv_columns"
+			],
+			[
+				"genet",
+				"genetic_tree"
+			],
+			[
+				"n",
+				"n_hijos"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/rvb/uFace/FaceAssistantRecognition-master/templates/index.html",
+		"/home/rvb/uFace/FaceAssistantRecognition-master/app.py",
+		"/home/rvb/Downloads/NewEye-master/templates/index.html",
+		"/home/rvb/uFace/templates/index.html",
+		"/home/rvb/uFace/camera.py",
+		"/home/rvb/uFace/app.py",
+		"/home/rvb/uFace/makeup_artist.py",
+		"/home/rvb/uFace/capture.py",
+		"/home/rvb/uFace/pymagesearch/singlemotiondetector.py",
+		"/home/rvb/uFace/__init__.py",
+		"/home/rvb/uFace/utils.py",
+		"/home/rvb/uFace/take_picture.py",
+		"/home/rvb/uFace/templates/take_picture.html",
+		"/home/rvb/uFace/requirements.txt",
+		"/home/rvb/Downloads/Flask_Python_Simple_App_Capture_Webcam_Image-master/server.py",
+		"/home/rvb/scraping/caballoyrodeo/web_s (copy).py",
+		"/home/rvb/scraping/caballoyrodeo/pruebas.py",
+		"/home/rvb/scraping/caballoyrodeo/Names.csv"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "class.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
